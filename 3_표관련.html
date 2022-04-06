@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+	<!-- 
+		< 표 만들기 >
+		
+		목록 생성 태그 : ol
+			li...
+		표 생성 태그 : table
+			table만 가지고 표가 생성되지는 않는다
+			tr,td가 부수적으로 필요
+			
+		table : 표 생성 태그
+			tr : 행 생성 태그
+			td : 한 행에 셀 생성 태그
+						
+		 
+	
+	 -->
+	 
+		  
+		
+<body>
+
+	<table border="1"> <!-- 보더는 테두리를 말하는 것 -->
+		<tr>
+			<td>첫 번째</td> <!--  한 행에 대한 셀을 만드는 것.  즉 1번째 셀 생성되고 아래꺼는 오른쪽에 2번째 셀이 생성됨 -->
+			<td>두 번째</td>
+			<td>두 번째</td>
+		</tr>
+		<tr>
+			<td>A</td>	<!-- td없이도 나오지만 노란줄경고 뜨는데 html 특성상 좀 틀려도 잘 나오나 코드쌓이면 에러발생하니 정확히 쓰자 -->
+			<td>B</td>
+			<td>C</td>
+		</tr>
+		
+	</table>
+
+	
+	<hr>
+	
+	
+	<table border="1">
+	<caption><b> 웹브라우저 종류 </b></caption>  <!-- caption : 테이블에 대한 제목을 달아주는 태그. table태그 안에 써야한다 -->
+		<tr>
+			<th><strong>브라우저명</strong></th> <!--  한 행에 대한 셀을 만드는 것.  즉 1번째 셀 생성되고 아래꺼는 오른쪽에 2번째 셀이 생성됨 -->
+			<th><strong>제조사</strong></th>	  <!-- strong or b 태그 사용 했을 것인데 -->
+			<th><strong>홈페이지</strong></th>	  <!-- th : 제목 셀 생성 - 자동 굵게, 가운데 정렬 -->
+		</tr>
+		<tr>
+			<td>익스플로러</td>		<!-- td없이도 나오지만 노란줄경고 뜨는데 html 특성상 좀 틀려도 잘 나오나 코드쌓이면 에러발생하니 정확히 쓰자 -->
+			<td>MS</td>
+			<td>https://www.micorsoft.com</td>
+		</tr>
+		<tr>
+			<td>크롬</td>	
+			<td>google</td>
+			<td>https://www.google.com/</td>
+		</tr>
+		<tr>
+			<td>사파리</td>	
+			<td>애플</td>
+			<td>https://www.apple.com</td>
+		</tr>
+		<tr>
+			<td>파이어폭스</td>	
+			<td>Mozila</td>
+			<td>https://www.mozila.org</td>
+		</tr>
+		<caption><b> 웹브라우저 종류 </b></caption> <!-- 캡션은 어디에 넣어도 맨 위에 생성된다 -->
+		
+
+	</table>	
+		<figure>   <!-- figcaption 위치는 table태그 닫아주고 아래 적어야 하단에 출력된다 -->
+			<figcaption>테이블이나 사진에 대한 설명에 주로 사용</figcaption>
+			<figcaption>여러 줄 사용 가능</figcaption>
+		</figure>
+		
+		
+		
+		<hr>
+		
+		<h1>표의 행과 열 합치기</h1>
+		<!--
+		
+		rowspan : 행 합치기
+		colspan : 열 합치기
+		
+		
+		  -->
+		  
+	
+	<table border="1">
+		<tr>
+			<td colspan="4">1</td>
+			<td>2</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>7</td>
+			<td>8</td>
+			<td>9</td>
+			<td rowspan="2">10</td> <!-- 10번칸의 아래 칸(15번)과 병합됨 -->
+		</tr>
+		<tr>
+			<td>11</td>
+			<td colspan="2">12</td>
+			<td>13</td>
+		</tr>
+	</table>	  
+		  
+		  
+	
+	<hr>
+	
+	<!-- 사진 실습예제 -->	
+	<table border="1">
+		<tr>
+			<td rowspan="2" colspan="2" width="130px" height="150px">사진</td>
+			<td width="80px">이름</td> <!-- 옆으로 2칸 있으니  td 2개가 더 있어야함 -->
+			<td width="200px"></td>
+		</tr>
+		<tr>
+			<td>연락처</td> <!-- 첫줄에서 만들어진 범위에서 2칸 남아서 td2개 추가 -->
+			<td></td>
+		</tr>
+		<tr>
+			<td width="70px" height="50px">주소</td>
+			<td colspan="3"></td>
+		</tr>
+		<tr>
+			<td height="100px">자기소개</td>
+			<td colspan="3"></td>
+		</tr>
+	</table>		  
+	
+
+	
+	<hr>
+	
+	<h1>테이블 태그의 구조 설정</h1>
+	
+	<table border="1">
+	 	<tr>
+	 		<th>이름</th>
+	 		<th>나이</th>
+	 		<th>주소</th>
+	 	</tr>
+	 	<tr>
+	 		<td>강건강</td>
+	 		<td>20</td>
+	 		<td>서울시 강남구</td>
+	 	</tr>
+	 	<tr>
+	 		<td>남나눔</td>
+	 		<td>17</td>
+	 		<td>서울시 강북구</td>
+	 	</tr>
+	 	<tr>
+	 		<td>도대담</td>
+	 		<td>32</td>
+	 		<td>서울시 용산구</td>
+	 	</tr>
+	 	<tr>
+	 		<td colspan="2">총 인원</td>
+	 		<td>3명</td>
+	 	</tr>
+	 </table>
+
+	
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
