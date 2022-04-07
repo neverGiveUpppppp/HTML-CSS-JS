@@ -53,6 +53,7 @@
 		<input type="submit" value="검색">
 	
 		<h4>type="text"</h4>
+		<p>  문장 정보를 입력받을 때 사용</p>
 		<input type="text" size="50" placeholder="아이디 입력"  
 			   maxlength="8" name="userId" autofocus value="user01">  <!-- 시작하자마자 바로 커서를 깜빡이게 하고 싶으면 autofocus -->
  		<!-- name속성 : 사용자가 입력한 데이터를 저장할 수 있는 변수명을 기술하는 속성 -->	  <!-- ex) value=”user01” 적으면 처음부터 데이턱밧에 user01이 채워져서 나오게된다 -->
@@ -64,6 +65,7 @@
 			   maxlength="8" name="userId" autofocus readonly>
 			   
 		<h4>type="password"</h4>
+		<p> 비번 부분을 별표처리해서 화면출력</p>
 		<input type="password" name="userPwd" size="25" placeholder="pw 입력하세요">
 		
 		<h4>type="button",type="submit",type="reset"</h4>
@@ -75,9 +77,10 @@
 		<br>
 		<!-- button 태그 -->
 		<button>button <- 자동 submit</button> <!-- form태그 안에 있어야 자동으로 submit 역할을 함 -->
-		
+		<p>자동 버튼생성 <br>
+		      버튼은 뭔가 데이터를 전송하지않고, 버튼 만들기에 다른 기능이랑 연결시켜야함. 자동 summit한다</p>
 		<button type="button">button</button> <!-- 폼 태그 안에 있어도 자동을 안넘어감 -->
-		<button type="submit">submit</button> 
+		<button type="submit">submit<z/button> 
 		<button type="reset">reset</button> 
 		
 	</form>
@@ -137,6 +140,7 @@
 	
 	<br><br>
 	<hr>
+	<h3>html5 신기술들</h3>
 	<form>
 		<label>검색 : </label><input type="search" name="seachText">
 		<br>
@@ -152,7 +156,7 @@
 	
 	
 	<br>
-	<br
+	<br>
 	<hr>
 	<h2>숫자와 관련된 input태그</h2>
 	<form >
@@ -171,11 +175,11 @@
 	<hr>
 	<h2>숫자와 관련된 input태그</h2>
 	<form>
-		<input type="date">		<br> 
-		<input type="week">		<br> 
-		<input type="month">		<br>
-		<input type="time">				시간
-		<input type="datetime-local"> 달력에 시간 추가
+		<input type="date">				<br><br>  
+		<input type="week">				<br><br>  
+		<input type="month">			<br><br> 
+		<input type="time">				<br><br> 		<!-- 시간 -->
+		<input type="datetime-local"> 	<br><br>  <!-- 달력에 시간 추가 -->
 	</form>
 	
 	
@@ -183,12 +187,13 @@
 	<br>
 	<hr>
 	<h2>select태그와 option</h2>
+	<p>여러 옵션 중 선택할 수 있도록 리스트박스를 생성하는 태그</p>
 	<form>
 		<label>국적 : </label>
-		<select name="nation1">
-			<option value="ko">한국</option>				<!-- 밸류값을 지정안하면 name에 밸류값이 들어감 -->
-			<option value="ch" mulitiple>중국</option> 	<!-- 하나씩만 지정 가능한 상태라 복수 선택을 위해 multiple 추가 -->
-			<option value="jp" size="2">일본</option> 	<!-- size="2" "옵션을 2개만 보여준다는 의미 -->
+		<select name="nation1" size="5" multiple>
+			<option value="ko">한국</option>			<!-- 밸류값을 지정안하면 name에 밸류값이 들어감 -->
+			<option value="ch" >중국</option> 		<!-- 하나씩만 지정 가능한 상태라 복수 선택을 위해 multiple 추가 -->
+			<option value="jp" >일본</option> 		<!-- size="2" "옵션을 2개만 보여준다는 의미 -->
 			<option value="etc" selected>기타</option> 	<!-- selected를 해두면 선택이 되서 나온다 -->
 		</select>  
 	</form>
@@ -214,10 +219,17 @@
 	<hr>
 	
 	<h2>textarea</h2>
+	<p>여러줄을 입력 가능한 텍스트 입력 상자</p>
 	<form>
 		<textarea cols="30" rows="10" placeholder="내용입력" style="resize:none;"> 텍스트상자에 처음부터 값이 들어가있게함 </textarea>
-	</form>	<!-- cols = 가로길이 -->
+<!-- 		cols : 가로길이 지정
+			rows : 세로길이 지정
+			resize : 박스 테두리에서 마우스로 크기 조절 가능여부 설정
+				- none : 설정하면 리사이즈 불가
+			readonly : 읽기전용. 값 불변						 -->
+	</form>	
 	
+
 	
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
