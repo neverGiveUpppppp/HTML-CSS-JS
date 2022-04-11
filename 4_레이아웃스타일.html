@@ -51,7 +51,7 @@
 	/* 3. 여백 스타일 */
 	.space{background: beige; width: 100px; height: 100px;}
 	
-	/* 3-1. paddin */
+	/* 3-1. padding */
 	#padding1{padding: 20px;}	/* 전체크기 유지되고 그 안에 여백조절이 아닌 아예 전체 크기가 늘어남. padding크기 정하고 그담 사각형크기정할것 */
 	#padding2{padding-top: 50px; padding-left: 100px;}	/* 원하는 일부분만 패딩 적용 // 위로 50px 왼쪽 100px 안쪽여백(padding) 적용 */
 	
@@ -93,31 +93,92 @@
 	
 	
 	/* 4-1. 위치 종류 */
-	
+
 	
 	
 	/* 4-1-1. 절대위치와 상대위치 */
-	
+	#fixed-area{width: 100px; height: 100px; background: blue; position: fixed;}
 	
 	
 	/* 4-2. visible */
+	.visibility{width: 100px; height: 100px; border: 1px solid black;}
+    #v-test1{background: pink;}
+    #v-test2{background: skyblue; visibility: hidden; /* display: none; */}
+    #v-test3{background: violet;}
+    /* display: none; 아예 안보이게 하는거. 사라지게 해서 붙어있게 나오는거
+    visibility는 눈에만 안보이게 하는거 */
+	
+	/* 4-3. z-index */========================================
+
+	.z-wrap{width: auto; height: 210px; position: relative;}
+    .z-test{width: 150px; height: 100px; border: 1px solid black; position: absolute;}
+    /* 포지션 릴레이티브 자식들한테 맘대로...? 한번에 겹쳐서 나옴 */
+    #z1{background: yellow; top: 100px; left: 100px; z-index: 2;}
+    #z2{background: green; top: 50px; left: 50px; z-index: 1;}
+    #z3{background: red; top: 100px; left: 10px;}  
+    /* 요소3이 가장 위에 올라와 1,2의 글씨를 가린 상태. 이걸 보이게 하고 싶다면?
+    red가 가장 아래
+    요소들 사이에 뭐가 위로오고 아래로 오는 우선순위를 정하는 것(layer 개념)
+    기본값 1 */
 	
 	
-	
-	/* 4-3. z-index */
-	
-	
-	
-	/* 4-4. float */
-	
-	
+	/* 4-4. float */=====================================
+    .float-test{border: 1px solid black; width: 100px; height: 50px; float: left;}
+	/* float:left; 흐른다 -> 왼쪽으루 흐르게 한다 왼쪽에 붙게 만들겠다. 내 뒤에 잇는 것도 영향을 받음
+    hr h2 등 붙어서 나올 수 있는 것들은 전부 영향 받음
+    float 스탑스킬려면 <br clear="all">을 div class 아래 코드에 붙일 것
+	좌측 정렬이라고 봐도 되는가? 어렵다. 좌측정렬은 정렬이라고 해도 붙어서 나오지는 않기 때문
+    float는 방향에 맞춰서 전부 붙어서 나온다는 것 */
+
 	/* 5. 다단 스타일 */
-	
-	
-	
+	.column-wrap{border: 1px solid black; height: 300px; overflow: scroll;}
+    #column1{column-width: 300px; column-gap: 50px;}
+    #column2{column-count: 6; column-rule-style: dashed; column-rule-color: orange;}
+    .column-wrap>h5{column-span: all;}
+	/* overflow: scroll  넘어가서 글자가 겹치는 걸 이 부분을 스크롤 처리하는 기능 */
+	/* 한 다단이 300px이며 300px 300px씩해서 화면 크기에 따라 나오는 양이 달라짐 */
+    /* 6개의 다단이 나오개 처리하고 dashed는 다단 사이 실선  처리, column-rule-color: dash선 색깔 변경도 가능 */
+    
+    /* 전체 단을 다 합친 것 all을 이용해서 컬럼 스팬 */
+
+
+
+
 	/* 6. 표 스타일 */
-	
-	
+	/* 캡션을 항상 위였는데 css로 위치를 아래로 변경가능
+    표 테두리가 잘안보여서 만들어줄 것. css로 테두리 만들기 가능
+    강의시간 09:4142 ... 이럴 때는 td에도 border를 넣어줘야함
+ */
+    table{
+        caption-side: bottom;
+        border: 1px solid black;
+        width: 100px; 
+        height:400px;
+        table-layout: fixed;
+        word-break: break-all;
+        border-collapse: collapse;
+        border-collapse: separate;
+        border-spacing: 50px 50px;
+        empty-cells: hide;
+        /* 줄이고 싶어서 width 줄여도 내용에서 더 줄일 수 없어서 더 안줄여진다 */
+    }
+    td{
+        border: 1px solid black;
+        width:80px;
+        text-align: center;
+        height: 100px;
+        vertical-align: top;
+        /* td에서 width를 줄여도 안줄여짐 그럼 어찌할까?*/
+        /* 테이블에 table-layout fixed하면 무조건적으로 지정한 크기만큼 나옴. 
+        근데 벗어난 내용들은 어떻게 할까? word-break: break-all; 쓰면 내용이 표 안에 맞춰 들어옴
+        border-collapse 두 경계가 하나로 합침. 기본적으로 serperate였음
+        border-spacing 테두리(네모칸)마다 간격 조절하기
+        emty-cells:hide 
+        vertical-align: top; 글씨를 위에 붙게 하고 싶다면 */
+
+    }
+
+
 	
 	
 
@@ -220,7 +281,7 @@
     <pre>   - 선택자{padding: 숫자;}</pre>
     <!-- 3-2. margin -->
     <h3>margin</h3>
-    <p>요소들간의 간격을 조절하는 속성 // 밖(?)에서 조절</p>
+    <p>요소들간의 간격을 조절하는 속성 // 밖에서 여백 조절</p>
     <pre>   - 선택자{margin}: 숫자;}</pre>
 
     <h4>기준 div</h4>
@@ -280,6 +341,7 @@
     <div class="float-test" id="f4">444</div>
     <div class="float-test" id="f5">555</div>
 
+    <br clear="all">
     <hr>
     <hr>
 

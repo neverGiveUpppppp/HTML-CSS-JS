@@ -14,21 +14,26 @@
 	
 	/* 2)내부 스타일 시트 */
 	/*   전체선택표시의 아스트로 : *{} 속성과 속성값이 들어감   */
-	/* *{color:blue;}) // color 글자색 변경 속성  */
 
-	#id2{background:yellow; color: green;}
-	
+    /* 2. 태그 선택자 */
+	*{color:blue;} /* color 글자색 변경 속성 */
+    p{color: blue;} /* p태그 : p태그는 전부 컬러 바꿈. ex)li{color:blue;} */
+
+	#id2{background:yellow; color: green;}   /* id=''나 #id나 1번만 가능 */
 	.class1{background:black; color: white;}
 	.class2{background:black; color: pink;}
     
     /* 4. 속성 선택자 */
-	div[name=name1]{background: orange;}	/* = : name이 완벽하게 name1인 얘만 추출해서 적용 */
-	div[name~=name1]{background: brown;} 	/* ~= : 공백으로 구분했을 때 name1이 있어도 가져온다 */
-	div[name|=name1]{background: skyblue;}
-	div[name^=name1]{background: white;}
-	div[class$=class]{background: coral;}
-	div[class*=v-c]{background: blue;}
-	
+	/* div선택자[속성=속성값]{설정값;}와 같은 형태로 사용 */
+    div[name=name1]{background: orange;}	 /* = : name이 완벽하게 name1인 얘만 추출해서 적용 */
+	div[name~=name1]{background: brown;} 	 /* ~= : 공백으로 구분했을 때 name1이 있어도 가져온다 */
+	div[name|=name1]{background: skyblue;}  /*  |= : 구분자로 구분했을 때 속성 값을 가지고 있으면 해당 */
+	div[name^=name1]{background: white;}    /* ^= 속성이 속성값으로 시작할 때 해당 */
+	div[class$=class]{background: coral;}   /* $ : 속성으로 끝나는 값이 속성 값이면 해당 */
+	div[class*=v-c]{background: blue;}      /* *= 속성이 속성 값을 포함하고 있으면 해당 */
+    
+
+
 	/* 5. 후손 선택자와 자손 선택자 */
 	#testDiv>h4{background: orangered;}
 	#testDiv>ul>li{background: yellowgreen;}
@@ -48,12 +53,13 @@
 	#hover-test:hover{background:gold; color:black; cursor: pointer}/* cursor: pointer 마우스 커서 바꿔서 클릭할 수 있게 손가락 모양으로 바뀌게 하는 옵션 */
 	
 	/* 8. 상태 선택자 */
-	input[type=checkbox]:checked{width: 20px; height: 20px;}
-	#userId:focus, #userPwd:focus{background: red;}
-	option:disabled{background: red; color:while;}
-	option:enabled{background: yellowgreen; }
+	input[type=checkbox]:checked{width: 20px; height: 20px;} /* 체크 상태의 input태그 */
+	#userId:focus, #userPwd:focus{background: red;}     /* 초점이 맞춰진 input태그 선택 */
+	option:disabled{background: red; color:while;}      /* 사용 가능 input태그 선택 */
+	option:enabled{background: yellowgreen; }           /* 사용 불가능 input태그 */
 	
 	/* 9. 구조 선택자 */
+    <!-- 9-1. 일반 구조 선택자 -->
 	#test1 p:first-child{background: red; color:white;}
 	#test1 p:last-child{background: orange; color:white;} 
 	/* 
@@ -66,19 +72,22 @@
 	#test2 p:first-of-type{background: red; color:white;} /* id가 test2인 태그에 첫번째 적용 // 위치 우선 */
 	#test2 p:last-of-type{background: orange; color:white;} 	  /* 테스트5에 주황색 적용 // 위치 우선 */
 	#test2 p:nth-of-type(2n){background: yellow;} 
-	#test2 p:nth-last-of-type(4){background: green; color:white;} /* 테스트2에 적용. 밑에서부터 4번째에 적용 */ 
+	#test2 p:nth-last-of-type(4){background: green; color:white;} /* 테스트2에 적용. 밑에서부터 4번째에 적용 // <p>중에서부터 뒤에서 4번째*/ 
 	
-	
+    
+
 	/* 10. 문자 선택자 */
 	#test3 p::first-letter{font-size: 100px;} /* first-letter 첫글자만 폰트크기 크게 */
 	#test3 p::first-line{background:beige;} 		/* 첫 줄 전체 적용  */
-	#test3 p::atfer{contend:'태그 뒤에 추가';}
-	#test3 p::after{contend:'태그 뒤에 추가';}
-	#test3 p::before{contend:'태그 앞에 추가';}
-	#test3 p::selection{background: purple;} 
+	#test3 p::after{contend:'태그 뒤에 추가';}  /* 태그 가장 끝에 내용 추가 */
+	#test3 p::before{contend:'태그 앞에 추가';} /* 태그 가장 앞에 내용 추가 */
+	/* 드래그 색깔 바꾸기 */
+    #test3 p::selection{background: purple;} 
 	
+    /*  11. 부정 선택자 */
 	#test4 li:nth-child(2n)
 	#tset4 li:not(nth-child(2n-1)){background: gray;}
+
 </style>
 </head>
 <body>
@@ -145,20 +154,22 @@
     <h2>속성 선택자</h2>
     <p>기본 선택자 뒤에 []를 사용하여 속성과 속성 값 사용</p>
     <pre>   - 선택자[속성=속성값]{설정 값;}와 같은 형태로 사용</pre>
-    <div name="name1" class="div-class">div 1</div>
-    <div name="name1 name2" class="div-class">div 2</div>
-    <div name="name1-name3" class="div-class">div 3</div>
-    <div name="name4" class="div-class">div 4</div>
+    <div name="name1" class="div-class">div 1</div>         <!-- ~= : 공백으로 구분이 되어 있는 속성 값들 전체 해당 -->
+    <div name="name1 name2" class="div-class">div 2</div>   <!-- |= : 구분자로 구분했을 때 속성 값을 가지고 있으면 해당 -->
+    <div name="name1-name3" class="div-class">div 3</div>   <!-- ^= 속성이 속성값으로 시작할 때 해당 -->
+    <div name="name4" class="div-class">div 4</div>         <!-- ^= 속성이 속성 값으로 시작할 때 해당 -->
 
     <hr>
 
     <!-- 5. 후손 선택자와 자손 선택자 -->
     <!-- 5-1. 후손/자손 선택자 적용 HTML판 -->
     <h2>자손 선택자와 후손 선택자</h2>
-    <p>자손 선택자 : 부모 바로 아래 요소(직계) / 후손 선택자 : 하위 요소 전부</p>
+    <p>   1)자손 선택자 : 부모 바로 아래 요소(직계) 
+          2)후손 선택자 : 하위 요소 전부+자기자신
+    </p>
     <pre>   
-        - 자손 선택자 : 선택자>자손 선택자{설정 값;} <br>
-        - 후손 선택자 : 선택자 후손선택자{설정 값;}
+        - 자손 선택자 : 선택자>자손 선택자{설정 값;} <br>   <!-- 나는 내 부모님의 자손이다 -->
+        - 후손 선택자 : 선택자 후손선택자{설정 값;}         <!-- 나는 단군의 후손이다 -->
     </pre>
     <div id="testDiv">
         <h4>자손 입니다.</h4>
@@ -170,6 +181,7 @@
     </div> 
 
     <hr>
+
 
     <!-- 6. 동위 선택자 -->
     <!-- 6-1. 동위 선택자 적용 HTML판 -->
