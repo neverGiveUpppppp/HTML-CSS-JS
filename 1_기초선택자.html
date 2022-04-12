@@ -59,7 +59,7 @@
 	option:enabled{background: yellowgreen; }           /* 사용 불가능 input태그 */
 	
 	/* 9. 구조 선택자 */
-    <!-- 9-1. 일반 구조 선택자 -->
+    /* 9-1. 일반 구조 선택자 */
 	#test1 p:first-child{background: red; color:white;}
 	#test1 p:last-child{background: orange; color:white;} 
 	/* 
@@ -79,8 +79,8 @@
 	/* 10. 문자 선택자 */
 	#test3 p::first-letter{font-size: 100px;} /* first-letter 첫글자만 폰트크기 크게 */
 	#test3 p::first-line{background:beige;} 		/* 첫 줄 전체 적용  */
-	#test3 p::after{contend:'태그 뒤에 추가';}  /* 태그 가장 끝에 내용 추가 */
-	#test3 p::before{contend:'태그 앞에 추가';} /* 태그 가장 앞에 내용 추가 */
+	#test3 p::after{content:'태그 뒤에 추가';}  /* 태그 가장 끝에 내용 추가 */
+	#test3 p::before{content:'태그 앞에 추가';} /* 태그 가장 앞에 내용 추가 */
 	/* 드래그 색깔 바꾸기 */
     #test3 p::selection{background: purple;} 
 	
@@ -165,7 +165,7 @@
     <!-- 5-1. 후손/자손 선택자 적용 HTML판 -->
     <h2>자손 선택자와 후손 선택자</h2>
     <p>   1)자손 선택자 : 부모 바로 아래 요소(직계) 
-          2)후손 선택자 : 하위 요소 전부+자기자신
+          2)후손 선택자 : 하위 요소 전부 + 자기자신
     </p>
     <pre>   
         - 자손 선택자 : 선택자>자손 선택자{설정 값;} <br>   <!-- 나는 내 부모님의 자손이다 -->
@@ -179,6 +179,28 @@
             <li>나도 ul의 자손이면서 동시에 div의 후손입니다.</li>
         </ul>
     </div> 
+
+<!-- 
+        [후손 선택자]
+    쉽게 말하면 CSS Element(요소) Element(요소) 선택자
+    요소 내부의 요소를 선택하는 데 사용됨.
+    ex)
+    <div>요소 안에 있는 모든 <p>요소를 선택하고 스타일 지정
+    div p {
+        background-color: yellow;
+    }
+    
+    [자손 선택자]
+    쉽게 말하면 Element(요소)>Element(요소) 선택자
+    특정 부모가 있는 요소를 선택하는 데 사용됨.
+    !지정된 부모의 직접적인 자식이 아닌 요소는 선택안됨.!
+    
+    ex)
+    부모가 <div> 요소인 모든 <p>요소를 선택하고 스타일 지정
+    div > p {
+        background-color: yellow;
+                                                                } -->
+
 
     <hr>
 

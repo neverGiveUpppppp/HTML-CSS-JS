@@ -3,8 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>레이아웃 스타일</title>
-    
  
+<!--  
+
+CSS에서 box 모델이라는 용어는 디자인과 레이아웃에 대해 설명할 때 사용됨.
+
+box 모델: 기본적으로 모든 HTML 요소를 감싸는 상자
+
+content : 텍스트와 이미지가 표시되는 상자의 내용
+padding : 콘텐츠 주변 영역을 지움.
+border: padding과 content를 둘러싸는 테두리
+margin: 테두리 밖의 영역을 지움
+
+box 모델을 사용하면 요소 주위에 테두리를 추가하고 요소 사이의 공간을 정의할 수 있음.
+
+!중요! 
+CSS를 사용하여 요소의 너비 및 높이를 설정할 때는 content 영역의 너비와 높이만 설정하면 됨.
+
+요소 전체 크기를 계산하려면 padding, border, margin도 추가해야 함.
+
+ex) 아래의 <div>요소의 총 너비는 350px임.
+div{
+    width: 320px;
+    padding: 10px;
+    border: 5px solid gray;
+    margin: 0;
+}
+
+[계산 방법]
+320px(width)
++ 20px(왼쪽 + 오른쪽 padding)
++ 10px(왼쪽 + 오른쪽 border)
++ 0px(왼쪽 + 오른쪽 margin)
+= 350px
+
+  -->
 
 <style>
 
