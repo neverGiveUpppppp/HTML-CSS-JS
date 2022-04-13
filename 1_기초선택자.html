@@ -27,10 +27,10 @@
 	/* div선택자[속성=속성값]{설정값;}와 같은 형태로 사용 */
     div[name=name1]{background: orange;}	 /* = : name이 완벽하게 name1인 얘만 추출해서 적용 */
 	div[name~=name1]{background: brown;} 	 /* ~= : 공백으로 구분했을 때 name1이 있어도 가져온다 */
-	div[name|=name1]{background: skyblue;}  /*  |= : 구분자로 구분했을 때 속성 값을 가지고 있으면 해당 */
+	div[name|=name1]{background: skyblue;}  /* 대쉬로 구분했을때 name1이 있으면 가져옴 // |= : 구분자로 구분했을 때 속성 값을 가지고 있으면 해당 */
 	div[name^=name1]{background: white;}    /* ^= 속성이 속성값으로 시작할 때 해당 */
 	div[class$=class]{background: coral;}   /* $ : 속성으로 끝나는 값이 속성 값이면 해당 */
-	div[class*=v-c]{background: blue;}      /* *= 속성이 속성 값을 포함하고 있으면 해당 */
+	div[class*=v-c]{background: blue;}      /* class에 v-c가 포함이 되어있으면 선택해라// *= 속성이 속성 값을 포함하고 있으면 해당 */
     
 
 
@@ -38,12 +38,12 @@
 	#testDiv>h4{background: orangered;}
 	#testDiv>ul>li{background: yellowgreen;}
 	#testDiv li{background: orangered;}
-	#testDiv ul{background: olive; color: white;}
+	#testDiv ul{background: olive; color: white;}   /*ul이 li를 가지고 있으니 영역을 다 감싸주는거*/
 	
 	
 	/* 6.동위 선택자 */
-	#div-test1+div{background:chocolate;} 		/* test1에 바로 뒤에있는 div라는 의미로 test2 가 적용됨 */
-	#div-test1~div{background: lightsalmon;} 	/* 내 밑 div 중에 나랑 동레벨은 다 선택 적용 */
+	#div-test1+div{background:chocolate;} 		/* 바로뒤에놈 // test1에 바로 뒤에있는 div라는 의미로 test2 가 적용됨 */
+	#div-test1~div{background: lightsalmon;} 	/* 뒤에있는 요소 전부다 // 내 밑 div 중에 나랑 동레벨은 다 선택 적용 */
 	
 	
 	/* 7. 반응 선택자 */
@@ -53,26 +53,26 @@
 	#hover-test:hover{background:gold; color:black; cursor: pointer}/* cursor: pointer 마우스 커서 바꿔서 클릭할 수 있게 손가락 모양으로 바뀌게 하는 옵션 */
 	
 	/* 8. 상태 선택자 */
-	input[type=checkbox]:checked{width: 20px; height: 20px;} /* 체크 상태의 input태그 */
-	#userId:focus, #userPwd:focus{background: red;}     /* 초점이 맞춰진 input태그 선택 */
-	option:disabled{background: red; color:while;}      /* 사용 가능 input태그 선택 */
-	option:enabled{background: yellowgreen; }           /* 사용 불가능 input태그 */
+	input[type=checkbox]:checked{width: 20px; height: 20px;} /* 체크했을때 크기가 커짐 // 체크 상태의 input태그 */
+	#userId:focus, #userPwd:focus{background: red;}     /* 포커스시 선택 // 초점이 맞춰진 input태그 선택 */
+	option:disabled{background: red; color:while;}      /* option:disabled 로 되어있는애만 속성줌 // 사용 불가능 input태그 선택 */
+	option:enabled{background: yellowgreen; }           /* 사용 가능 input태그 */
 	
 	/* 9. 구조 선택자 */
     /* 9-1. 일반 구조 선택자 */
-	#test1 p:first-child{background: red; color:white;}
-	#test1 p:last-child{background: orange; color:white;} 
+	#test1 p:first-child{background: red; color:white;} /*첫번째 위치가 p태그면 선택할거야 */
+	#test1 p:last-child{background: orange; color:white;} /*마지막 위치가 p태그면 선택할거야*/
 	/* 
 	last-child 마지막 태그에에 적용될 것 같은데 적용x 
 	why?
 	위치를 먼저 구분하고 그 담 조건을 본다. last-child가 p태그 아니기에 적용x  */
-	#test1 P:nth-child(2n){background: yellow;}
+	#test1 P:nth-child(2n){background: yellow;} /*p인 짝수번째 애 선택 */
 	#test1 P:nth-last-child(4){background: green; color:white;} /* 뒤에서부터 4번째가 p태그면 적용  // 태그 우선 */
 	
-	#test2 p:first-of-type{background: red; color:white;} /* id가 test2인 태그에 첫번째 적용 // 위치 우선 */
-	#test2 p:last-of-type{background: orange; color:white;} 	  /* 테스트5에 주황색 적용 // 위치 우선 */
-	#test2 p:nth-of-type(2n){background: yellow;} 
-	#test2 p:nth-last-of-type(4){background: green; color:white;} /* 테스트2에 적용. 밑에서부터 4번째에 적용 // <p>중에서부터 뒤에서 4번째*/ 
+	#test2 p:first-of-type{background: red; color:white;} /* p태그중 첫번째 // id가 test2인 태그에 첫번째 적용 // 위치 우선 */
+	#test2 p:last-of-type{background: orange; color:white;} /* p태그중 마지막 // 테스트5에 주황색 적용 // 위치 우선 */
+	#test2 p:nth-of-type(2n){background: yellow;} /*p태그중 수열 2n 짝수*/
+	#test2 p:nth-last-of-type(4){background: green; color:white;} /* 뒤에서부터 p태그중 4번째 // 테스트2에 적용. 밑에서부터 4번째에 적용 // <p>중에서부터 뒤에서 4번째*/ 
 	
     
 
@@ -81,19 +81,19 @@
 	#test3 p::first-line{background:beige;} 		/* 첫 줄 전체 적용  */
 	#test3 p::after{content:'태그 뒤에 추가';}  /* 태그 가장 끝에 내용 추가 */
 	#test3 p::before{content:'태그 앞에 추가';} /* 태그 가장 앞에 내용 추가 */
-	/* 드래그 색깔 바꾸기 */
-    #test3 p::selection{background: purple;} 
+    #test3 p::selection{background: purple;} 	/* 드래그 색깔 바꾸기 */
 	
     /*  11. 부정 선택자 */
-	#test4 li:nth-child(2n)
-	#tset4 li:not(nth-child(2n-1)){background: gray;}
+    #test4 li:nth-child(2n){background:gray;}/*짝수번째 중 li면 선택*/
+    #test4 li:not(:nth-child(2n-1)){background:blue;}/*홀수번째가 아닌li면 선택*/
 
 </style>
+
 </head>
 <body>
 
 
-	<!-- css에 대한 기본 형식 --!>
+	<!-- css에 대한 기본 형식 -->
 	<!-- 선택자{style속성 : 속성값; style속성: 속성값;}) -->
 
 
