@@ -111,7 +111,7 @@
    <input type="checkbox" name="pizza">불고기 피자 &nbsp;&nbsp;
    <input type="checkbox" name="pizza">치즈 피자 &nbsp;&nbsp;
    <input type="checkbox" name="pizza">파인애플 피자 &nbsp;&nbsp;
-   <input type="checkbox" name="pizza">콤비네이션 피자 <br>
+   <input type="checkbox" name="pizza" >콤비네이션 피자 <br>
    
    <label>일회용품 : </label>
    <input type="radio" name="product1" id="need" checked>필요함 &nbsp;&nbsp; 
@@ -164,9 +164,9 @@
           
             // 2) 태그 선택자 :  <tag>
             // 여러개 지정 가능. 쉼표로 잇기
-            // $('li').css('backgroundColor','#f05515');
-            // $(document).ready(function(){
-            //     $('li').css('background','#ff0');   //  $(document).ready() 적용
+            $('li').css('backgroundColor','#f05515');
+            $(document).ready(function(){
+                $('li').css('background','#ff0');   //  $(document).ready() 적용
             }).css('backgroundColor','blue');
             jQuery(document).ready(function(){      //  jQuery(document).ready() w적용
                 $('p').css('font','20px bold');
@@ -231,24 +231,29 @@
 
             
             // 6) 속성 선택자 : [ ]
+            $('input[size]').css('backgroundColor','green');
+            $('input[class$=t]').css('backgroundColor','red');
+            
             $('input[size]').css('background','yellowgreen');
             $('input[type=number]').attr('placeholder','번호 필수 입력');
-            $('input[class~=important]').val('12345');  // ~= : important 포함해야하는데 구분자가 존재하기에 띄어쓰기로 구분했을 때 임포턴트가 들어가 있어도 조건에 부합
-            // val() : value에 값을 설정하거나 value 값을 확인할 때 사용 (= js의 value랑 동일)
-                
-            console.log($('input[class~=important]').val());
+            $('input[type=text]').removeAttr('size');
+            $('input[class^=o').css('background','black');
+            // $('input[class~=important]').val('12345');  // ~= : important 포함해야하는데 구분자가 존재하기에 띄어쓰기로 구분했을 때 임포턴트가 들어가 있어도 조건에 부합
+            // // val() : value에 값을 설정하거나 value 값을 확인할 때 사용 (= js의 value랑 동일)
+            $('intput[type~=check]').css('check');   
+            // console.log($('input[class~=important]').val());
 
-            // *= : 특정값을 포함하는 것에 조건 적용
-            // ^= : 특정값으로 시작하는 것에 조건 적용
-            // $= : 특정값으로 끝나는 것에 조건 적용        
-            $('input[name*=d]').css('background','pink');           // 특정값을 포함하고있는거 다 , d라는게 안에 들어가있는 
-            $('input[name^=n]').css('background','skyblue');        // n으로 시작하는것
-            $('input[name^=der]').css('background','rgba(0,100,0,0.1)');    // der로 끝나는것
+            // // *= : 특정값을 포함하는 것에 조건 적용
+            // // ^= : 특정값으로 시작하는 것에 조건 적용
+            // // $= : 특정값으로 끝나는 것에 조건 적용        
+            // $('input[name*=d]').css('background','pink');           // 특정값을 포함하고있는거 다 , d라는게 안에 들어가있는 
+            // $('input[name^=n]').css('background','skyblue');        // n으로 시작하는것
+            // $('input[name^=der]').css('background','rgba(0,100,0,0.1)');    // der로 끝나는것
             
 
-            $('input:text').css('background', 'white');         // 'input:text'       input type이 text인것
-            $('input:password').css('background', 'gold');  // 'input:password'   input type이 password인것   
-            $('input:checkbox').prop('checked', true);      // 'input:checkbox'
+            // $('input:text').css('background', 'white');         // 'input:text'       input type이 text인것
+            // $('input:password').css('background', 'gold');  // 'input:password'   input type이 password인것   
+            // $('input:checkbox').prop('checked', true);      // 'input:checkbox'
             // prop() : 속성값의 여부를 true/ false로 설정하거나 알아냄
             
             // 속성 설정 2가지
@@ -269,13 +274,31 @@
         // 참고: 값이 전체 단어일 필요는 없음!    
 
 
+        // 메소드 체이닝 , 여러개의 속성
+        $('input[password]').css('background','blue').css('color','blue');
+        //객체로 넣어주는 방법, 여러개의 속성
+        $('input[class~=text]').css({'background':'green','color':'red'});
+        // Uncaught SyntaxError: Unexpected string 오류  - 키값잘못연결해서났음
+        // $('input[size]').css('backgroundColor','green');
+        $('input[class$=order]').css('backgroundColor','red');
+        $('input[type=number]').attr('placeholder','폰번호');
+        
+
+        // 마우스 호버시 // 마우스 아웃시 -> 메소드 체이닝 가능
+        $('input:image').mouseenter(function(){
+            $(this).attr('src','../images/city1.png');
+        }).mouseout(function(){
+            $(this).attr('src','../images/river2.png')
+        })
+        
+
+        //input type = "button"에 너비 200px, 높이 200px와 왕버튼으로 값 변경
+        
+           
         
 
     });
     </script>
-
-
-
 
 
 
