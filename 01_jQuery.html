@@ -266,8 +266,7 @@
             //      attr() : 속성에 대한 값이 다양할 때         -> placeholder , background, src,img 등 값이 다양한 속성
             //      prop() : 속성에 대한 값이 true/false일 때   -> select, checked같은 true,false값만 사용하는 속성 
             
-            
-        // [상세 설명]
+                    // [상세 설명]
         // 1) [속성]: 지정된 속성을 가진 요소를 선택
         // 2) [속성="값"]: 지정된 속성과 값을 가진 요소를 선택
         // 3) [속성~="값"]: 지정된 단어를 포함하는 속성 값을 가진 요소를 선택
@@ -279,7 +278,105 @@
         // 참고: 값이 전체 단어일 필요는 없음!    
 
 
-        
+            // $('input:radio').css('width', '30px');
+            // $('input:radio').css('height', '30px'); 아래 한줄 과 같은 코드
+            
+            // 스타일(기능?) 복수 적용 방법 2가지
+            // 방법1 : 객체{ } 스타일(?)
+            // 방법2 : 메소드 체인
+            $('input:radio').css({'width' : '30px', 'height' : '30px'}); // 객체방식 { }으로 css 복수 적용  
+            $('input:radio').css('width', '30px').css('height', '30px'); // 메소드 체인 적용가능    
+            $('input:file').css({'backgroundColor' : 'blue', 'color':'white'});
+            
+            // 이벤트를 걸어줄 수 있다. 액션,마우스오버(?)
+            
+            $('input:image').mouseenter(function(){     // mouseenter :마우스가 들어가면 발동
+                $(this).attr('src', '../images/river1.PNG');
+            });
+            $('input:image').mouseout(function(){
+            $(this).attr('src', '../images/flower1.PNG'); // mouseout() 메소드에 다시 .attr로 연결(메소드체이닝)
+            });
+            $('input:image').mouseenter(function(){
+            $(this).attr('src', '../images/river1.PNG');
+            $('input:image').mouseout (function(){
+            $(this).attr('src', '../images/flower1.PNG');
+            });
+
+
+            // 메소드 체이닝 , 여러개의 속성
+            $('input:radio').css('width','30px').css('height','30px');
+               
+            //객체로 넣어주는 방법, 여러개의 속성
+            $('input:radio').css({'width':'30px','height':'30px'});
+            
+            // Uncaught SyntaxError: Unexpected string 오류  - 키값잘못연결해서났음
+            $('input:file').css({'bacground-color':'blue','color':'white'});
+            
+            // 마우스 호버시 // 마우스 아웃시 -> 메소드 체이닝 가능
+            $('input:image').mouseenter(function(){
+                // input:image 라는 태그를 이야기함 = this
+                $(this).attr('src','../images/river1.png');
+            }).mouseout(function(){
+                $(this).attr('src','../images/flower1.png');
+            });            
+            
+            
+            // 값을 제출하고 싶을 때 value 지정
+            // button submit reset 밸류 없어도 자동 전송
+
+            
+            //input type = "button"에 너비 200px, 높이 200px와 왕버튼으로 값 변경
+            $('input:button').css({'width':'200px', 'height':'200px'}).val('왕버튼'); // value : 받아오는 값
+            $('input:button').css({'width':'200px', 'height':'200px'}).attr('value','왕버튼');
+
+            $('input:submit').css({'background': 'orange', 'color': 'white'});
+            $('input:reset').css('background', 'yellow');
+            $('input:disabled').css('background', 'powderblue');    // 더이상 사용할 수 없는 disabled 같은 경우도 사용가능(지정가능(?))
+            
+            
+            
+
+            
+            
+            
+            // // 순서에 따른 필터 선택자 : zero-based
+            // $('tr:odd').css('background', 'yellow');         // tr:odd 짝수 쪽에 노란색 색칠
+            // $('tr:even').css('background', 'lightgray');     // tr:even 홀수 쪽 나머지 부분에 회색 색칠
+            // $('tr:first').css({'background':'black','color':'white'});      // tr:first 맨 첫번째
+            // $('tr:last').css({'background':'orangered','color':'white'});   // tr:last  맨 마지막
+            
+
+            // // 우리가 생각하는 짝수번째임
+            // // 1 베이스로 움직임. not zero-based index
+            // $('tr:nth-child(2n)').css('background', 'yellowgreen');
+            // $('tr:nth-child(3)').css('background','orange');
+
+            // $('tr:eq(7)').css({'background': 'black', 'color':'gray'});
+            // $('tr:gt(2)').css('background', 'white');   // gt() : greater than - 012보다 큰 곳에 적용하겠다는 의미. 2포함x
+            //                                             // gt(n) : zero-based로 n번째 이후부터 적용됨
+            // $('tr:lt(7)').css('font-size', '30px');     // lt() : less than 0~7 보다 작은 부분. 
+            // $('tr:contains("B형")').css('color','red'); // contains() : 해당 내용이 들어가 있는 부분만 적용
+
+            // $('td:has(a)').css('font-style','italic');  // has(a) : a태그 가지고 있으면 적용 // has() : () 안 내용을 가지고 있으면 적용 
+            // $('td:has(a[href])').css('background','cyan');  // has(a[href]) : 남나눔,도대담 a태그 가지고 있음 href까지 가지고 있으면 파랑색까지 적용
+            // $('td:not(:contains("류라라"))').css('color', 'olive');  // not() : () 안 내용이 안들어가있으면 적용
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+        });
+ 
 
     });
     </script>
