@@ -48,54 +48,69 @@
     </p>
     <button id="btn1"> 매개인자로 전달하기</button>
     <script>
-        // document.getElementById('btn1') // 접근
-        document.getElementById('btn1').onclick = function(){ // 접근하고 클릭하면 해당 함수를 실행하라는 의미
+        // 함수 위아래 2개가 있고 위의 함수(익명함수)가 아래 함수(선언적 함수)를 호출하는 형태
+        // 위쪽 익명함수가 test3(인자o), test3(인자x) 순으로 아래 선언적함수를 2번 호출하는 형태
+        document.getElementById('btn1').onclick = function(){ // getElement로 속성 접근. 클릭하면 해당 함수를 실행하라는 의미
             test3('안녕','반가워');
             test3();    // 자바에서 매개변수 있는 메소드에 매개변수 전달 안하면 
                         // 에러가 났는데, 얘는 undefined를 출력
                         // 지정된 매개변수보다 적은 개수를 호출하는 것을 허용, 전달되지 않은 매개변수는 undefined
         }
-        function test3(value){  // 매개변수 1개인데 위의 test3는 2개이므로 자바라면 에러나지만
-            console.log('test3호출');   // js는 오류 안나고 실행됨. 반가워는 안찍힘
-            console.log(value);         // w
-
-            console.log(arguments); // arguments : 내가 넘겨 받아온 것을 다 담아오는 것 // arguments 처음 사용.
-            // 콘솔 출력값 : Arguments [callee: ƒ, Symbol(Symbol.iterator): ƒ]
-            // 안녕,반가워를 위에서 받은거를 arguments에 다 배열로 저장
+        function test3(value){  // 매개변수 1개인데 위의 test3는 2개이므로 자바라면 에러나지만, js는 오류 안나고 실행됨. 반가워는 안찍힘
+            console.log('test3호출');   // test3호출
+            console.log(value);         // 안녕 // 위의 test3('안녕','반가워');에서 인자가 안녕,반가워 2개인데 value로 앞의 '안녕'만 들어감
+                                        // undefined // 두번째로 test3()로 호출되서 test3()에서는 인자가 없으므로 undefined
+            console.log(arguments); // Arguments(2) ['안녕', '반가워', callee: ƒ, Symbol(Symbol.iterator): ƒ]
+                                    // Arguments [callee: ƒ, Symbol(Symbol.iterator): ƒ]    // test3()의 호출. 인자가 없으므로 argument도 받은 인자x
+            // arguments : 내가 넘겨 받아온 것을 다 담아오는 것 // arguments 처음 사용
+            // 안녕,반가워를 위에서 받은거를 arguments에 다 배열로 저장하는 식
         }
-
     </script>
 
 
     <br>
     <h3>매개인자로 스스로를 전달하기</h3>
-    <button onclick='test4("JavaScript");'>JavaScript</button>
-    <button onclick='test4("jQuery");'>jQuery</button>
+    <button onclick='test4("JavaScript--");'>방법1 : JavaScript</button>
+    <button onclick='test4("jQuery--");'>방법1 : jQuery</button>
     <script>
         // 방법1
-        function test4(subject){    // 인자 직접 설정해주는 것이 가장 간단한 방법
-            alert('오늘 배울 내용은 '+ subject + '입니다.');
-        
+    // 인자 직접 설정해주는 것이 가장 간단한 방법
+    // button 태그 test4() 안 매개변수인 js,jquery를 
+    // function test4(subject) 안에 넣어주고 얘는 다시 alert(subject)로 넣어준다
+        function test4(subject){   // 선언적 함수 : 함수이름 유무o
+            alert('오늘 배울 내용은 '+ subject + '입니다.');    // 오늘 배울 내용은 jQuery--입니다.
         }
     </script>
     <br><br>
-    <button onclick='test5(this);'>JavaScript</button>
-    <button onclick='test5(this);'>jQuery</button> <!-- this : 지금 현재 내가 있는 곳에 대한 코드를 의미 -->
+    <button onclick='test5(this);'> 방법2 : JavaScript </button>
+    <button onclick='test5(this);'> 방법2 : jQuery </button> <!-- this : 지금 현재 내가 있는 곳에 대한 코드를 의미 -->
     <script>
         // 방법2
-        function test5(subject){ 
-        // 온클릭 this에서 함수 파라미터인 subject에 넣을 때 뭐라고 찍히나 확인해보자   
-            console.log(subject) // <button onclick='test5(this);'>JavaScript</button>
+        // this를 통한 button 태그 요소(element)값 전달 + innerHTML
+    // 내부 로직 설명
+    // 1)button 태그 test5() 안 매개변수인 this는 버튼 태그 엘리먼트(속성) 값 전체를 <의미한다>
+    //    (내부적으로 button 태그 test5('방법2 : JavaScript')도 함께 포함한 상태)
+    // 2)button 태그 test5()에서 function test5(subject)를 호출하며 button 태그에서 받아온 엘리먼트(요소) 값 전체 데이터를
+    //    function test5(subject) 매개변수인 subject에 넣는다
+    // 3)subject는 받아온 인자값을 다시 alert 안 subject.innerHTML에 넣어준다
+    //      이때, innerHTML이 필요한 이유는 button태그의 요소를 받아왔기에 요소를 받을 수 있는건 innerHTML이기 때문
 
-            alert('오늘 배울 내용은 '+ subject.innerHTML + '입니다.');
+        function test5(subject){   // 선언적 함수 : 함수이름 유무o
+        // 온클릭 this에서 함수 파라미터인 subject에 넣을 때 뭐라고 찍히나 확인해보자   
+            console.log(subject) // <button onclick="test5(this);"> 방법2 : JavaScript </button>
+            alert('오늘 배울 내용은 '+ subject.innerHTML + '입니다.'); // 오늘 배울 내용은 방법2 : jQuery입니다.
         }
     </script>
     
     
 
     <h3>함수의 리턴처리</h3>
+    <p>
+        함수에서 다른 함수를 호출하여 리턴값 받아오기           <br>
+    </p>
     <button onclick="test6();">함수 리턴처리</button>
     <script>
+        // test6() 함수에서 값을 리턴하는 returnFunc()함수를 호출하여 test6()에서도 값 리턴할 수 있게 만든 구조
         function test6(){
             // 반환타입이 없다고 리턴할 수 없는건 아님
             var ran = returnFunc ();
@@ -116,22 +131,30 @@
             v();     //실행시키면 v가 calledFunction을 실행시키게 됨 
         }
         function calledFunction(){
-            alert('calledFunction 실행');
+            alert('calledFunction 실행');   // calledFunction 실행
         }
+        // 내부 로직 설명
+        // 1)button test7(calledFunction)의 calledFunction인자가 function test(v)의 매개변수인 (v)로 들어감
+        // 2) v();의 v에는 calledFunction이 담겨있으므로 아래의 fuction calledFunction(){} 함수를 호출
     </script>
 
 
 
     <h3>함수 리턴</h3>
-    <!-- function 받아와서 실행시켜줘야해 onclick="test8()();"에다가 ()소괄호 추가 -->
+    <!-- function 받아와서 실행시켜줘야해서 onclick="test8()();"에다가 ()소괄호 추가 -->
     <button onclick="test8()();">함수 리턴</button> <!-- 실행을 위한 소괄호() 한번 더 붙임 -->
     <script>
         function test8(){     
-            return function(){  // 함수 반환
+            return function(){  // 함수 반환    // 익명함수
                 alert('함수 반환 성공');   // 결과값이 아무것도 나타나지는 않으나 펑션을 반환받음. test8이 펑션 자체임
-            }  //  내가 받아온 것을 실행시키기 위해 ()를 집어 넣었음. 실행시켜야되. 뒤에 소괄호 한번 더 붙여줌
-        }      // 펑션만 받아온거지 실행한게 아니라서 실행용 소괄호를 넣어줘야함
-               // function 함수가 이름 없는 함수라 ()이렇게만 쓰는 것
+            }  // 내가 받아온 것을 실행시키기 위해 button test8()에 ()를 추가. 실행시켜야되니 뒤에 소괄호 한번 더 붙여줌
+        }      // function test8()에서 button test8()으로 펑션만 받아온거지 실행한게 아니라서 실행용 소괄호를 넣어줘야함
+ 
+        //     내부 로직 설명
+        // 1)button 태그에서 test8()함수 호출
+        // 2)function test8() 함수 내부에서 return 으로 함수 리턴시킴
+        // 3)return으로 받아온  함수가  button test8()을 들어감
+        // 4) 받아온 함수 실행을 위해 button test8()에 소괄호()를 추가
 
 
             // test8() 호출한거에대한 반환값이 함수니까 test8()만 쓰면 함수까지만 리턴받아온거지 
@@ -156,18 +179,15 @@
             // 계산식이 되어 2가 출력된것. 
 
             var str = '';
-            str += 'var num1 = Number(prompt(" 2"));';
-            str += 'var num2 = Number(prompt(" 2"));';
+            str += 'var num1 = Number(prompt(" prompt사용1"));';
+            str += 'var num2 = Number(prompt(" prompt사용2"));';
             str += 'var sum = num1 + num2;';
             str += 'alert(num1 + " + " + num2 + " = "+ sum);';
             
             console.log(str); 
             eval(str);  // eval()을 통해 진짜 코드로 바꿔보겠다
-
         }
     </script>
-
-
 
 
 
@@ -208,8 +228,7 @@
             var num3 = -10 /0 ;
             console.log(num3);// 음의 무한대
             console.log(num3 == -Infinity); // true // 인피티 앞에 마이너스(-) 붙음
-
-    }
+        }
     </script>
 
 
