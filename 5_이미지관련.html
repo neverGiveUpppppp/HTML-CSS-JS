@@ -31,14 +31,14 @@
 	<h3>width와 height</h3>
 	<h4>고정 크기 단위  : 화면 사이즈가 바뀌어도 크기 불변</h4>
 	<p>화면 사이즈가 바뀌어도 크기 불변</p>
-	<img src="sample/image/flower1.png" width="200px" height="150px">
+	<img src="sample/image/flower1.PNG" width="200px" height="150px">
 	<img src="sample/image/flower2.png" width="200px" height="150px">
 	<img src="sample/image/flower3.png" width="200px" height="150px">
 	<img src="sample/image/flower4.png" width="200px" height="150px">
 	<img src="sample/image/flower5.png" width="200px" height="150px">
 	<h4>가변 크기 단위</h4>
 	<p>화면 사이즈/기준 사이즈에 따라 크기 변경</p>	
-	<img src="sample/image/flower1.png" width="15%" height="150px">	
+	<img src="sample/image/flower1.png" width="15%" height="150px">
 	<img src="sample/image/flower2.png" width="15%" height="150px">
 	<img src="sample/image/flower3.png" width="15%" height="150px">
 	<img src="sample/image/flower4.png" width="15%" height="150px">
@@ -50,17 +50,23 @@
 	<p>한 웹페이지에서 또 다른 웹페이지를 추가하는 것</p>
 	<p>무조건 연결되는건 아니고, 해당 웹사이트에서 허용해야 가능</p>
 	<iframe>한 웹페이지에서 또 다른 웹페이지를 추가하는 것</iframe>
-	<iframe width="200px" height="150px" src="https://www.google.com"></iframe> <!-- 구글 연결 허용금지됨 -->
+	<iframe width="300px" height="200px" src="https://www.google.com"></iframe> <!-- 구글 연결 허용금지됨 -->
 	<iframe width="500px" height="150px" src="4_영역관련.html"></iframe> <!-- 로컬 html파일도 연결가능 -->
+	<iframe width="450px" height="300px" src="http://www.iei.or.kr"></iframe>
+	<iframe width="450px" height="300px" src="http://www.naver.com"></iframe><!-- naver는 연결거부됨 -->
 	<!-- 보안 허용해놓은건 보임 -->
-	<!--  보안 허용 안해놓은건 안보임 -->
+	<!-- 보안 허용 안해놓은건 안보임 -->
 
 
 	<hr>
 	
 	<h4>이미지 구역을 나누어 각각 링크 설정</h4>
+	<p>
+		map : 클릭 가능한 영역이 있는 이미지. 이미지 맵을 정의			<br>
+		area : map태그에서 이미지 맵을 클릭 가능한 영역을 정의하는 기능	<br>
+	</p>
 	<img src="sample/image/river1.png" usemap="#imageMap">
-	<map name="imageMap">
+	<map name="imageMap">	<!-- img태그의 속성인 usemap의속성값과 map태그의 name속성값이 같아야함 -->
 		<area shape="rect" coords="0, 0, 300, 500" href="https://www.naver.com" target="_self"> <!-- rect : rengtagle 사각형 // 시작점 x축 0,y축0으로부터 가로 300 세로 500 -->
 		<area shape="rect" coords="300,0,600,500" href="https://www.google.com"target="_blank">  <!-- x축300,y축0 지점에서 시작해서 600,500만큼 이동한다는 의미 -->
 	</map>
