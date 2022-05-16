@@ -142,7 +142,6 @@ div{
     visibility는 눈에만 안보이게 하는거 */
 	
 	/* 4-3. z-index */========================================
-
 	.z-wrap{width: auto; height: 210px; position: relative;}
     .z-test{width: 150px; height: 100px; border: 1px solid black; position: absolute;}
     /* 포지션 릴레이티브 자식들한테 맘대로...? 한번에 겹쳐서 나옴 */
@@ -157,17 +156,20 @@ div{
 	
 	/* 4-4. float */=====================================
     .float-test{border: 1px solid black; width: 100px; height: 50px; float: left;}
+
+    
 	/* float:left; 흐른다 -> 왼쪽으루 흐르게 한다 왼쪽에 붙게 만들겠다. 내 뒤에 잇는 것도 영향을 받음
     hr h2 등 붙어서 나올 수 있는 것들은 전부 영향 받음
     float 스탑스킬려면 <br clear="all">을 div class 아래 코드에 붙일 것
 	좌측 정렬이라고 봐도 되는가? 어렵다. 좌측정렬은 정렬이라고 해도 붙어서 나오지는 않기 때문
     float는 방향에 맞춰서 전부 붙어서 나온다는 것 */
 
+    
 	/* 5. 다단 스타일 */
-	.column-wrap{border: 1px solid black; height: 300px; overflow: scroll;}
-    #column1{column-width: 300px; column-gap: 50px;}
-    #column2{column-count: 6; column-rule-style: dashed; column-rule-color: orange;}
-    .column-wrap>h5{column-span: all;}
+    .column-wrap  {border: 1px solid black; height:300px; overflow:scroll;}
+    #column1{column-width:300px; column-gap:50px;}
+    #column2{column-width:300px;/*한 단의 너비*/column-rule-style:dashed;/*나눠주는 선*/ column-rule-color:orange;/*선컬러*/}
+    .column-wrap>h5 {column-span:all;/*단들을 한 줄로 보여지게끔. */}
 	/* overflow: scroll  넘어가서 글자가 겹치는 걸 이 부분을 스크롤 처리하는 기능 */
 	/* 한 다단이 300px이며 300px 300px씩해서 화면 크기에 따라 나오는 양이 달라짐 */
     /* 6개의 다단이 나오개 처리하고 dashed는 다단 사이 실선  처리, column-rule-color: dash선 색깔 변경도 가능 */
@@ -183,24 +185,26 @@ div{
     강의시간 09:4142 ... 이럴 때는 td에도 border를 넣어줘야함
  */
     table{
-        caption-side: bottom;
-        border: 1px solid black;
-        width: 100px; 
+        caption-side:bottom;/*캡션을 표 아래로 내릴 수 있음. */
+        border:1px solid #000;
+        width:300px;/*줄어들지 않음*/
         height:400px;
-        table-layout: fixed;
-        word-break: break-all;
-        border-collapse: collapse;
-        border-collapse: separate;
-        border-spacing: 50px 50px;
-        empty-cells: hide;
+        table-layout:fixed;/*무조건 내가 지정한 크기로 나오게 하는 속성*/
+        word-break: break-all;/*테이블 크기에 맞춰 글자들이 아래로 내려감.*/
+        border-collapse:collapse; /*보더의 테두리가 선이 2개이던게 1개로 깔끔하게 합쳐짐*/
+        border-collapse:separate; /*본래 기본값*/
+        border-spacing:50px 50px; /*칸의 패딩? */
+        empty-cells : hide; /*비어있는 셀 숨겨줌*/
         /* 줄이고 싶어서 width 줄여도 내용에서 더 줄일 수 없어서 더 안줄여진다 */
     }
     td{
-        border: 1px solid black;
-        width:80px;
-        text-align: center;
-        height: 100px;
-        vertical-align: top;
+
+        border:1px solid black;
+        width:80px;/*줄어들지 않음*/
+        text-align:center;
+        height:100px;
+        vertical-align:top;/*글자의 위아래 정렬 */
+
         /* td에서 width를 줄여도 안줄여짐 그럼 어찌할까?*/
         /* 테이블에 table-layout fixed하면 무조건적으로 지정한 크기만큼 나옴. 
         근데 벗어난 내용들은 어떻게 할까? word-break: break-all; 쓰면 내용이 표 안에 맞춰 들어옴
